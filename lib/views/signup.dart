@@ -40,25 +40,24 @@ class _signupState extends State<signup> {
         },
         textInputAction: TextInputAction.done,
         decoration: InputDecoration(
-            prefixIcon: Icon(Icons.vpn_key),
-            contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-            hintText: "Password",
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-    ));
+          prefixIcon: const Icon(Icons.vpn_key),
+          contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+          hintText: "Password",
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ));
+    // ignore: unused_local_variable
     final loginButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(30),
       color: Colors.redAccent,
       child: MaterialButton(
-        padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-        minWidth: MediaQuery.of(context).size.width,
-        onPressed: () {},
-        child:Text("Login", textAlign: TextAlign.center, style: TextStyle()
-        )
-        
-      ),
+          padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+          minWidth: MediaQuery.of(context).size.width,
+          onPressed: () {},
+          child: const Text("Login",
+              textAlign: TextAlign.center, style: TextStyle())),
     );
 
     return Scaffold(
