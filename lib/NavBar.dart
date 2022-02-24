@@ -120,5 +120,7 @@ Widget bottomSheet() {
     ),
   );
 }
+
+  //bottomNavigationBar: CurvedNavigationBar(),
             
 // TODO Implement this library.

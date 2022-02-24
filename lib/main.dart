@@ -1,10 +1,13 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, avoid_unnecessary_containers
-
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:isokapp/controller/splash_controller.dart';
+
 import 'NavBar.dart';
+import 'views/accounts/login_view.dart';
+import 'views/splash/splash_view.dart';
 
 void main() {
-  runApp(Isoko());
+  runApp(const Isoko());
 }
 
 class Isoko extends StatelessWidget {
@@ -13,19 +16,26 @@ class Isoko extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Isoko',
+    final scontroller = Get.put(SplashController());
+
+    return GetMaterialApp(
+      title: 'Isoko App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
+      // ignore: unrelated_type_equality_checks
+      home: Obx(() => scontroller.splash == true
+          ? const SplashScreen()
+          : const LoginView()),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
   @override
   MyHomePageState createState() => MyHomePageState();
 }
@@ -34,14 +44,15 @@ class MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: NavBar(),
+      drawer: const NavBar(),
       appBar: AppBar(
-        title: Text('IsokApp'),
+        title: const Text('IsokApp'),
       ),
       body: Center(
+        // ignore: avoid_unnecessary_containers
         child: Container(
           child: GridView.count(
-            padding: EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(20.0),
             crossAxisCount: 2,
             children: const <Widget>[
               MyMenu(
@@ -69,6 +80,7 @@ class MyHomePageState extends State<MyHomePage> {
 }
 
 class MyMenu extends StatelessWidget {
+  // ignore: use_key_in_widget_constructors
   const MyMenu({required this.title, required this.icon, required this.warna});
   final String title;
   final IconData icon;
@@ -89,7 +101,7 @@ class MyMenu extends StatelessWidget {
                 size: 70.0,
                 color: warna,
               ),
-              Text(title, style: TextStyle(fontSize: 17.0))
+              Text(title, style: const TextStyle(fontSize: 17.0))
             ],
           ),
         ),
